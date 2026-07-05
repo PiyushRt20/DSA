@@ -1,25 +1,40 @@
 class Solution {
 public:
     int n;
-    int solve(int i, vector<int>&arr, int k, vector<int>&dp){
-        if(i == n) return 0;
-        if(dp[i] != -1){
-            return dp[i];
-        }
-        int ans = -1;
-        int maxEle = -1;
-        int len = 0;
-        for(int j=i; j<min(n, i+k); j++){
-            len += 1;
-            maxEle = max(maxEle, arr[j]);
-            int sum = (len * maxEle) + solve(j+1, arr, k, dp);
-            ans = max(ans, sum);
-        }
-        return dp[i] = ans;
-    }
+    // int solve(int i, vector<int>&arr, int k, vector<int>&dp){
+    //     if(i == n) return 0;
+    //     if(dp[i] != -1){
+    //         return dp[i];
+    //     }
+    //     int ans = -1;
+    //     int maxEle = -1;
+    //     int len = 0;
+    //     for(int j=i; j<min(n, i+k); j++){
+    //         len += 1;
+    //         maxEle = max(maxEle, arr[j]);
+    //         int sum = (len * maxEle) + solve(j+1, arr, k, dp);
+    //         ans = max(ans, sum);
+    //     }
+    //     return dp[i] = ans;
+    // }
     int maxSumAfterPartitioning(vector<int>& arr, int k) {
         n = arr.size();
-        vector<int>dp(n, -1);
-        return solve(0, arr, k, dp);
+        // vector<int>dp(n, -1);
+        // return solve(0, arr, k, dp);
+
+        vector<int>dp(n+1, 0);
+        for(int i=n-1; i>=0; i--){
+            int ans = -1;
+            int maxEle = -1;
+            int len = 0;
+            for(int j=i; j<min(n, i+k); j++){
+                len += 1;
+                maxEle = max(maxEle, arr[j]);
+                int sum = (len * maxEle) + dp[j+1];
+                ans = max(ans, sum);
+            }
+            dp[i] = ans;
+        }
+        return dp[0];
     }
 };

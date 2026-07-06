@@ -10,12 +10,12 @@ public:
                 return a[1] > b[1];
             }
         });
-        for(int i =0; i<n; i++){
-            for(int j=0; j<2; j++){
-                cout<<intervals[i][j]<<" ";
-            }
-            cout<<endl;
-        }
+        // for(int i =0; i<n; i++){
+        //     for(int j=0; j<2; j++){
+        //         cout<<intervals[i][j]<<" ";
+        //     }
+        //     cout<<endl;
+        // }
         int b = intervals[0][1];
         int cnt = 1;
         for(int i =1; i<n; i++){
@@ -25,7 +25,7 @@ public:
             cnt++;
             b = intervals[i][1];
         }
-        cout<<cnt;
+        // cout<<cnt;
         return cnt;
     }
 };

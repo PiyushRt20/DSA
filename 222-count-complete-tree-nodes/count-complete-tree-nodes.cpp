@@ -11,12 +11,45 @@
  */
 class Solution {
 public:
-    int countNodes(TreeNode* root) {
+    int solve(TreeNode* root){
         if(root == NULL){
             return 0;
         }
-        int leftN = countNodes(root->left);
-        int rightN = countNodes(root->right);
-        return 1 + leftN + rightN;
+        int lh = getLeftHeight(root);
+        int rh = getRightHeight(root);
+        if(lh == rh){
+            return (1<<lh) - 1;             //(1<<lh) 2 ki power lh  agr lh == rh 
+        }
+        return 1 + solve(root->left) + solve(root->right);          //lh != rh
+    }
+    int getLeftHeight(TreeNode* root){
+        int ht = 0;
+        while(root != NULL){
+            ht++;
+            root = root->left;
+        }
+        return ht;
+    }
+    int getRightHeight(TreeNode* root){
+        int ht = 0;
+        while(root != NULL){
+            ht++;
+            root = root->right;
+        }
+        return ht;
+    }
+    int countNodes(TreeNode* root) {
+        // if(root == NULL){
+        //     return 0;
+        // }
+        // int leftN = countNodes(root->left);
+        // int rightN = countNodes(root->right);
+        // return 1 + leftN + rightN;
+
+        //Using the property of complete binary tree (O((log2n)2))
+        if(root == NULL){
+            return 0;
+        }
+        return solve(root);
     }
 };

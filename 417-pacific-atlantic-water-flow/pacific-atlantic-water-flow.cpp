@@ -22,16 +22,25 @@ public:
         vector<vector<int>> pacific(n, vector<int>(m, 0));
         vector<vector<int>> atlantic(n, vector<int>(m, 0));
         for(int j =0; j<m; j++){
-            dfs(0, j, heights, pacific);
+            if(!pacific[0][j]){
+                dfs(0, j, heights, pacific);
+            }
         }
         for(int i=1; i<n; i++){
-            dfs(i, 0, heights, pacific);
+            if(!pacific[i][0]){
+                dfs(i, 0, heights, pacific);
+            }
+            
         }
         for(int j =0; j<m; j++){
-            dfs(n-1, j, heights, atlantic);
+            if(!atlantic[n-1][j]){
+                dfs(n-1, j, heights, atlantic);
+            }
         }
         for(int i =0; i<n-1; i++){
-            dfs(i, m-1, heights, atlantic);
+            if(!atlantic[i][m-1]){
+                dfs(i, m-1, heights, atlantic);
+            }
         }
         for(int i =0; i<n; i++){
             for(int j =0; j<m; j++){

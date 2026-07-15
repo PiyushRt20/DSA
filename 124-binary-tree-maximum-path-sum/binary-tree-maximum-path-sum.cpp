@@ -16,12 +16,14 @@ public:
             return 0;
         }
         int lSum = max(0, solve(root->left, maxi));
-        int rSum = max(0,solve(root->right, maxi));
-        maxi = max(maxi, root->val + lSum + rSum);
-        
-        return root->val + max(lSum, rSum);
+        int rSum = max(0, solve(root->right, maxi));
+        maxi = max(maxi , root->val + lSum + rSum);
+        return root->val + max(lSum , rSum);
     }
     int maxPathSum(TreeNode* root) {
+        if(root == NULL){
+            return 0;
+        }
         int maxi = -1e9;
         solve(root, maxi);
         return maxi;

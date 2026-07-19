@@ -10,7 +10,7 @@ public:
         for(int i =0; i<s.size(); i++){
             int val = s[i] - 'a';
             if(inStack[val] == false){
-                while(!st.empty() && val <= st.top() && freq[st.top()] > 0){
+                while(!st.empty() && val < st.top() && freq[st.top()] > 0){
                     inStack[st.top()] = false;
                     st.pop();
                 }

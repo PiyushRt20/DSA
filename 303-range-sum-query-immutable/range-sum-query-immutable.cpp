@@ -29,16 +29,14 @@ public:
     }
 };
 class NumArray {
-    vector<int> arr;
+    SGTree s;
     int n;
 public:
-    NumArray(vector<int>& nums) {
+    NumArray(vector<int>& nums) : s(nums.size()) {
         n = nums.size();
-        arr = nums;
+        s.build(0, 0, n-1, nums);
     }
     int sumRange(int left, int right) {
-        SGTree s(n);
-        s.build(0, 0, n-1, arr);
         return s.query(0, 0, n-1, left, right);
     }
 };

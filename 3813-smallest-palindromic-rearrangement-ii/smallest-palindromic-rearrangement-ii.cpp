@@ -14,27 +14,28 @@ public:
     string smallestPalindrome(string s, int k) {
         int n = s.size();
         string ans = "";
-        int cntLetters = 0;
+        // int cntLetters = 0;
         vector<int> count(26, 0);
         for(int i =0; i<n/2; i++){
             count[s[i] - 'a']++;
-            cntLetters++;
+            // cntLetters++;
         }
-        long long tways = 1;
-        for(int i =0; i<26; i++){
-            if(count[i] > 0){
-                tways *= nCr(cntLetters, count[i], k);
-                cntLetters -= count[i];
-            }
-            if(tways >= k){
-                break;
-            }
-        }
-        if(tways < k){
-            return "";
-        }
+        // long long tways = 1;
+        // for(int i =0; i<26; i++){
+        //     if(count[i] > 0){
+        //         tways *= nCr(cntLetters, count[i], k);
+        //         cntLetters -= count[i];
+        //     }
+        //     if(tways >= k){
+        //         break;
+        //     }
+        // }
+        // if(tways < k){
+        //     return "";
+        // }
 
         for(int i =0; i<n/2; i++){
+            bool placedChar = false;
             for(int j = 0; j<26; j++){
                 if(count[j] > 0){
                     count[j]--;
@@ -53,11 +54,15 @@ public:
                     }
                     if(ways >= k){
                         ans.push_back(j + 'a');
+                        placedChar = true;
                         break;
                     }
                     k -= ways;
                     count[j]++;
                 }
+            }
+            if(placedChar == false){
+                return "";
             }
         }
         string r = ans;

@@ -23,9 +23,10 @@ public:
         int tar = sum/2;
         int subset = 0;
         vector<vector<int>> dp(n, vector<int>(tar+1, -1));
-        for(int i =1; i<=tar; i++){
+        for(int i =tar; i>0; i--){
             if(solve(n-1, i, dp, stones)){
                 subset = i;
+                break;
             }
         }
         return sum - 2* subset;

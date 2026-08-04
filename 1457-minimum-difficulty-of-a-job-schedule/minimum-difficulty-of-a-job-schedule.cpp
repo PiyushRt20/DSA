@@ -9,9 +9,9 @@ public:
             }
             return maxi;
         }
-        if(idx >= n && d == 0){
-            return 0;
-        }
+        // if(idx >= n && d == 0){
+        //     return 0;
+        // }
         if(dp[idx][d] != -1){
             return dp[idx][d];
         }

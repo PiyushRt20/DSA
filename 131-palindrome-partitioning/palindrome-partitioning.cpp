@@ -17,7 +17,7 @@ public:
             ans.push_back(ds);
             return;
         }
-        for(int i =idx; i<=n; i++){
+        for(int i =idx; i<n; i++){
             if(checkPalin(s.substr(idx, i-idx+1))){
                 ds.push_back(s.substr(idx, i-idx+1));
                 solve(i+1, n, ds, ans, s);

@@ -8,7 +8,7 @@ public:
             return dp[idx];
         }
         if(s[idx] == '0'){ 
-            return dp[idx] = 0;
+            return 0;
         }    
         int one = solve(idx+1, s, n, dp);
         int two = 0;

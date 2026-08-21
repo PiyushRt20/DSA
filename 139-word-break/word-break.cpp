@@ -11,7 +11,7 @@ public:
             string t = s.substr(idx, i-idx+1);
             if(st.count(t)){
                 if(solve(i+1, s, n, st, dp)){
-                    return true;
+                    return dp[idx] = true;
                 }
             }
         }

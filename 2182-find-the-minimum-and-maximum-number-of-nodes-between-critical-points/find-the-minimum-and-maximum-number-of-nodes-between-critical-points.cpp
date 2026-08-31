@@ -31,9 +31,9 @@ public:
             prev = temp;
             temp = temp->next;
         }
-        for(auto it : criticalPointIdx){
-            cout<<it<<" ";
-        }
+        // for(auto it : criticalPointIdx){
+        //     cout<<it<<" ";
+        // }
         int m = criticalPointIdx.size();
         if(m == 0 || m == 1){
             return {-1, -1};

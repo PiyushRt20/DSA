@@ -8,9 +8,9 @@ public:
         if(valid < 0){
             return false;
         }
-        if(valid > (n - i) + (m - j)){
-            return false;
-        }    
+        // if(valid > (n - i) + (m - j)){
+        //     return false;
+        // }    
         if(i == n-1 && j == m-1 && valid == 0){
             return true;
         }
